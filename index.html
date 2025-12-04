@@ -11,45 +11,54 @@
       padding: 20px;
     }
     .calculator {
-      max-width: 600px;
+      max-width: 520px;
       margin: 0 auto;
       background: #fff;
-      padding: 20px;
+      padding: 22px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 20px;
+      font-size: 26px;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      font-weight: 700;
     }
+
     .top-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       gap: 10px;
-    }
-    .top-row div {
-      flex: 1;
     }
     label {
       display: block;
-      font-size: 13px;
+      font-size: 16px;
       margin-bottom: 4px;
       font-weight: 600;
     }
-    input[type="number"] {
-      width: 100%;
-      padding: 6px 8px;
-      box-sizing: border-box;
+
+    /* Remove spinner arrows */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+      width: 80px;
+      padding: 6px;
+      text-align: right;
       border-radius: 4px;
       border: 1px solid #ccc;
-      font-size: 14px;
+      font-size: 18px;
+      font-weight: 600;
     }
     input[readonly] {
       background: #eee;
       cursor: not-allowed;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -57,9 +66,10 @@
     }
     th, td {
       border: 1px solid #ddd;
-      padding: 6px 8px;
+      padding: 8px;
+      font-size: 16px;
+      font-weight: 600;
       text-align: right;
-      font-size: 13px;
     }
     th:first-child,
     td:first-child {
@@ -68,14 +78,18 @@
     th {
       background: #f0f0f0;
     }
+
     tfoot td {
-      font-weight: bold;
+      font-weight: 700;
       background: #fafafa;
+      font-size: 18px;
     }
+
     .note {
-      font-size: 11px;
+      font-size: 14px;
       color: #777;
-      margin-top: 10px;
+      margin-top: 12px;
+      text-align: center;
     }
   </style>
 </head>
@@ -85,109 +99,36 @@
 
     <div class="top-row">
       <div>
-        <label for="pack">PACK (optional)</label>
-        <!-- Not used in the calculation, just for reference like your sheet -->
-        <input type="number" id="pack" value="4" step="0.01" />
+        <label for="pack">PACK</label>
+        <input type="number" id="pack" value="4" />
       </div>
       <div>
         <label for="qty">QTY</label>
-        <input type="number" id="qty" value="3" step="0.01" min="0" />
+        <input type="number" id="qty" value="0" min="0" />
       </div>
     </div>
 
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th>TINT</th>
           <th>ML / SHOT</th>
-          <th>CAL (QTY × ML / SHOT)</th>
+          <th>CAL (QTY × ML)</th>
         </tr>
       </thead>
       <tbody>
-        <!-- TINT 1 -->
-        <tr>
-          <td>TINT 1</td>
-          <td>
-            <input type="number" id="ml_1" step="0.01" value="15" />
-          </td>
-          <td>
-            <input type="number" id="cal_1" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 2 -->
-        <tr>
-          <td>TINT 2</td>
-          <td>
-            <input type="number" id="ml_2" step="0.01" value="69" />
-          </td>
-          <td>
-            <input type="number" id="cal_2" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 3 -->
-        <tr>
-          <td>TINT 3</td>
-          <td>
-            <input type="number" id="ml_3" step="0.01" value="16" />
-          </td>
-          <td>
-            <input type="number" id="cal_3" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 4 -->
-        <tr>
-          <td>TINT 4</td>
-          <td>
-            <input type="number" id="ml_4" step="0.01" value="0.5" />
-          </td>
-          <td>
-            <input type="number" id="cal_4" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 5 -->
-        <tr>
-          <td>TINT 5</td>
-          <td>
-            <input type="number" id="ml_5" step="0.01" />
-          </td>
-          <td>
-            <input type="number" id="cal_5" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 6 -->
-        <tr>
-          <td>TINT 6</td>
-          <td>
-            <input type="number" id="ml_6" step="0.01" />
-          </td>
-          <td>
-            <input type="number" id="cal_6" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 7 -->
-        <tr>
-          <td>TINT 7</td>
-          <td>
-            <input type="number" id="ml_7" step="0.01" />
-          </td>
-          <td>
-            <input type="number" id="cal_7" step="0.01" readonly />
-          </td>
-        </tr>
-        <!-- TINT 8 -->
-        <tr>
-          <td>TINT 8</td>
-          <td>
-            <input type="number" id="ml_8" step="0.01" />
-          </td>
-          <td>
-            <input type="number" id="cal_8" step="0.01" readonly />
-          </td>
-        </tr>
+        <tr><td>TINT 1</td><td><input type="number" id="ml_1" value="0"></td><td><input type="number" id="cal_1" readonly></td></tr>
+        <tr><td>TINT 2</td><td><input type="number" id="ml_2" value="0"></td><td><input type="number" id="cal_2" readonly></td></tr>
+        <tr><td>TINT 3</td><td><input type="number" id="ml_3" value="0"></td><td><input type="number" id="cal_3" readonly></td></tr>
+        <tr><td>TINT 4</td><td><input type="number" id="ml_4" value="0"></td><td><input type="number" id="cal_4" readonly></td></tr>
+        <tr><td>TINT 5</td><td><input type="number" id="ml_5"></td><td><input type="number" id="cal_5" readonly></td></tr>
+        <tr><td>TINT 6</td><td><input type="number" id="ml_6"></td><td><input type="number" id="cal_6" readonly></td></tr>
+        <tr><td>TINT 7</td><td><input type="number" id="ml_7"></td><td><input type="number" id="cal_7" readonly></td></tr>
+        <tr><td>TINT 8</td><td><input type="number" id="ml_8"></td><td><input type="number" id="cal_8" readonly></td></tr>
       </tbody>
       <tfoot>
         <tr>
-          <td>TOTAL</td>
+          <td>Total</td>
           <td id="totalMl">0.00</td>
           <td id="totalCal">0.00</td>
         </tr>
@@ -195,48 +136,33 @@
     </table>
 
     <div class="note">
-      • Enter only QTY and ML/SHOT values. CAL and TOTAL are computed automatically.<br>
-      • You can change default values to match different shade formulas.
+      • Enter only QTY & ML/SHOT values. CAL and TOTAL calculate automatically. <br>• Refresh for entering new values.</br>
     </div>
   </div>
 
   <script>
     function recalc() {
-      const qtyInput = document.getElementById('qty');
-      const qty = parseFloat(qtyInput.value) || 0;
-
+      const qty = parseFloat(document.getElementById('qty').value) || 0;
       let totalMl = 0;
       let totalCal = 0;
 
       for (let i = 1; i <= 8; i++) {
-        const mlField = document.getElementById('ml_' + i);
-        const calField = document.getElementById('cal_' + i);
-
-        const ml = parseFloat(mlField.value) || 0;
+        const ml = parseFloat(document.getElementById('ml_' + i).value) || 0;
         const cal = ml * qty;
-
         totalMl += ml;
         totalCal += cal;
-
-        // Show empty if zero, otherwise fixed decimals
-        calField.value = cal ? cal.toFixed(2) : "";
+        document.getElementById('cal_' + i).value = cal ? cal.toFixed(2) : "";
       }
 
-      document.getElementById('totalMl').textContent  = totalMl.toFixed(2);
-      document.getElementById('totalCal').textContent = totalCal.toFixed(2);
+      document.getElementById("totalMl").textContent = totalMl.toFixed(2);
+      document.getElementById("totalCal").textContent = totalCal.toFixed(2);
     }
 
-    // Attach events after DOM is ready
-    document.addEventListener('DOMContentLoaded', function () {
-      // Recalculate whenever QTY changes
-      document.getElementById('qty').addEventListener('input', recalc);
-
-      // Recalculate whenever any ML/SHOT changes
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById("qty").addEventListener("input", recalc);
       for (let i = 1; i <= 8; i++) {
-        document.getElementById('ml_' + i).addEventListener('input', recalc);
+        document.getElementById("ml_" + i).addEventListener("input", recalc);
       }
-
-      // Initial calculation with default values
       recalc();
     });
   </script>
